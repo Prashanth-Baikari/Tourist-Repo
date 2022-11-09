@@ -1,0 +1,81 @@
+<div class="bg">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="h3 fw-bold text-dark my-4">Register Tourist</div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4" style="position:static ;">     
+                <form #myForm="ngForm" (ngSubmit)="onSubmit()" >
+                    <div class="form-group">
+                        <label>Id</label>
+                        <input type="text" class="form-control" id="id" #id="ngModel" [(ngModel)]="tourist.id" name="id"
+                        required pattern="[0-9]+" maxlength="4" placeholder="Enter Id"> 
+                        <span *ngIf="id.invalid && (id.dirty || id.touched)">
+                            <small class="text-danger" *ngIf="id.errors?.['required']">This is a required Field</small>
+                            <small class="text-danger" *ngIf="id.errors?.['pattern']">id is invalid.It should be numbers of maximum 4 digits</small>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" id="firstName" [(ngModel)]="tourist.firstName" name="firstName"
+                        required maxlength="15" pattern="^[A-Za-z -]+$" #firstname="ngModel" placeholder="Enter First Name">
+                        <span *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)">
+                            <small class="text-danger" *ngIf="firstname.errors?.['required']">The is a required Field</small>
+                            <small class="text-danger" *ngIf="firstname.errors?.['pattern']"> Invalid.It should be Alphabets of maximum 15 characters</small>
+                        </span>
+                    </div>
+                    <div class="mb-2">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" id="lastName" [(ngModel)]="tourist.lastName" name="lastname"
+                        required #lastname="ngModel" maxlength="12" pattern="^[A-Za-z -]+$" placeholder="Enter Last Name">
+                        <span *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)">
+                            <small class="text-danger" *ngIf="lastname.errors?.['required']">The is a required Field</small>
+                            <small class="text-danger" *ngIf="lastname.errors?.['pattern']"> Invalid.It should be Alphabets of maximum 12 characters</small>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender</label> <br>
+                        <input type="radio" required name="gender" [(ngModel)]='tourist.gender' value='Male'>Male
+                        <input type="radio" required name="gender" [(ngModel)]='tourist.gender' value='Female'>Female
+                        <input type="radio" required name="gender" [(ngModel)]='tourist.gender' value='Others'>Others
+                    </div>
+                
+
+                    <div class="form-group">
+                        <label>Age</label>
+                        <input type="number" class="form-control" id="age" [(ngModel)]="tourist.age" name="age"
+                        required #age="ngModel" pattern="[0-9]+"  max="90" maxlength="2" placeholder="Enter Age">
+                        <span *ngIf="age.invalid && (age.dirty || age.touched)">
+                            <small class="text-danger" *ngIf="age.errors?.['required']">The is a required Field</small>
+                            <small class="text-danger" *ngIf="age.errors?.['pattern'] || age.errors?.['max']"> Invalid.It should be in numeric from 1 to 90</small>
+                        </span>
+                    </div>
+                    <div class="form-group">
+                        <label>From Place</label>
+                        <input type="text" class="form-control" id="fromPlace" [(ngModel)]="tourist.fromPlace" name="fromPlace"
+                        pattern="^[A-Za-z -]+$" required #from="ngModel" placeholder="Enter From Place">
+                        <span *ngIf="from.invalid && (from.dirty || from.touched)">
+                            <small class="text-danger" *ngIf="from.errors?.['required']">The is a required Field</small>
+                            <small class="text-danger" *ngIf="from.errors?.['pattern']"> Invalid.It should contain Alphabets only</small>
+                        </span>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label>Number Of Visit Days</label>
+                        <input type="text" class="form-control" id="numberofDaysVisits" [(ngModel)]="tourist.numberofDaysVisits" name="touristnumberofDaysVisits"
+                        required #visits="ngModel" pattern="[0-9]+"  placeholder="Enter Number of Visit Days" >
+                        <span *ngIf="visits.invalid && (visits.dirty || visits.touched)" >
+                            <small class="text-danger" *ngIf="visits.errors?.['required']">The is a required Field</small>
+                            <small class="text-danger" *ngIf="visits.errors?.['pattern']">It should be numeric only</small>
+                        </span>
+                    </div>
+                        <button class="btn btn-outline-success my-2 my-sm-0" [disabled]="myForm.invalid" type="submit">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>        
+</div>

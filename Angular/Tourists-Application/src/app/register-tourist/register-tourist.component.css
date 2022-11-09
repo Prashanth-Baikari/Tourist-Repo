@@ -1,0 +1,17 @@
+.container{
+    background-color: #e4e4e4c4;
+    height: auto;
+    width: 800px;
+}
+.bg{
+    /*
+    background-image: url(src\assets\img\tourists.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;*/
+
+    background: url(src\assets\img/1.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
